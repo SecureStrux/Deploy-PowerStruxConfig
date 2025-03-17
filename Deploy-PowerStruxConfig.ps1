@@ -1,5 +1,27 @@
 Function Deploy-PowerStruxConfig {
 
+    <#
+    .SYNOPSIS
+    Deploys the configuration file 'PowerStruxWAConfig.txt' to a local or remote computer.
+
+    .PARAMETER ComputerName
+    Specifies the target computer to deploy the configuration file. If not specified, it defaults to the
+    local system (`localhost`).
+    Valid Input: Any valid computer name or IP address.
+
+    .PARAMETER ConfigFile
+    Specifies the full path to the configuration file (`PowerStruxWAConfig.txt`).
+
+    .EXAMPLE
+    Deploy-PowerStruxConfig -ConfigFile "C:\path\to\PowerStruxWAConfig.txt"
+    Deploy the configuration file to the local system.
+
+    .EXAMPLE
+    Deploy-PowerStruxConfig -ComputerName "Host01" -ConfigFile "C:\path\to\PowerStruxWAConfig.txt"
+    Deploy the configuration file to a remote system named 'Host01'.
+
+    #>
+
     param (
         [Parameter(Mandatory = $false)]
         $ComputerName = "localhost",
@@ -51,7 +73,7 @@ Function Deploy-PowerStruxConfig {
     }
     else {
 
-        Write-Host "Script operations will be performed against $ComputerName."
+        Write-Host "Script operations will be performed remotely against $ComputerName."
         Write-Host ""
         
         Write-Host "Testing remote connectivity to port 445 (SMB) on $ComputerName."
@@ -66,6 +88,7 @@ Function Deploy-PowerStruxConfig {
         }
 
         Write-Host "Complete!" -ForegroundColor Green
+        Write-Host ""
 
         # Define the installation path for the remote computer.
         $installPath = "\\$ComputerName\c$\Program Files\WindowsPowerShell\Modules\ReportHTML"
