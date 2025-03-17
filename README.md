@@ -1,14 +1,6 @@
 # Deploy-PowerStruxConfig
 
-`Deploy-PowerStruxConfig` is a PowerShell script designed to deploy the `PowerStruxWAConfig.txt` configuration file to a specified local or remote computer. It ensures that the configuration file is placed in the correct directory on the target machine and performs necessary checks for administrative privileges and remote connectivity before proceeding with the deployment.
-
-## Features
-- Validates the configuration file name is `PowerStruxWAConfig.txt`.
-- Verifies the script is being run with administrative privileges.
-- Supports both local and remote deployments.
-- Checks remote connectivity to port 445 (SMB) before deploying to remote systems.
-- Ensures the installation path exists and is accessible.
-- Attempts to copy the configuration file to the appropriate path on the target system.
+`Deploy-PowerStruxConfig` is a PowerShell script designed to deploy the `PowerStruxWAConfig.txt` configuration file to a specified local or remote computer.
 
 ## Prerequisites
 
@@ -41,13 +33,13 @@
 ```powershell
 Deploy-PowerStruxConfig -ConfigFile "C:\Path\To\PowerStruxWAConfig.txt"
 ```
-This will deploy the `C:\Path\To\PowerStruxWAConfig.txt` PowerStrux configuration file to the local machine.
+This will deploy the PowerStrux configuration file located at `C:\Path\To\PowerStruxWAConfig.txt` to the local machine.
    
 ### Example 2: Running Remotely on a Single Machine
 ```powershell
 Deploy-PowerStruxConfig -ComputerName "Host01" -ConfigFile "C:\Path\To\PowerStruxWAConfig.txt"
 ```
-This will deploy the `C:\Path\To\PowerStruxWAConfig.txt` PowerStrux configuration file to `Host01`.
+This will deploy the PowerStrux configuration file located at `C:\Path\To\PowerStruxWAConfig.txt` to `Host01`.
 
 ### Example 3: Running Remotely on a Multiple Machines
 To target multiple systems, you can create a file named `target-hosts.txt`, which contains a list of hostnames (one per line). Then, use the following command to loop through each hostname and execute the function:
@@ -65,4 +57,4 @@ To target multiple systems, you can create a file named `target-hosts.txt`, whic
         Deploy-PowerStruxConfig -ComputerName $_ -ConfigFile "C:\Path\To\PowerStruxWAConfig.txt"
     }
     ```
-This command reads each hostname from the target-hosts.txt file and passes it to the Deploy-PowerStruxConfig function for execution.
+This command reads each hostname from the `target-hosts.txt` file and passes it to the `Deploy-PowerStruxConfig` function for execution. The script will deploy the PowerStrux configuration file located at `C:\Path\To\PowerStruxWAConfig.txt` to `Host01`, `Host02`, and `Host03`.
