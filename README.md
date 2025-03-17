@@ -1,6 +1,6 @@
 # Deploy-PowerStruxConfig
 
-`Deploy-PowerStruxConfig` is a PowerShell script designed to deploy the configuration file `PowerStruxWAConfig.txt` to a specified local or remote computer. It ensures that the configuration file is placed in the correct directory on the target machine and performs necessary checks for administrative privileges and remote connectivity before proceeding with the deployment.
+`Deploy-PowerStruxConfig` is a PowerShell script designed to deploy the `PowerStruxWAConfig.txt` configuration file to a specified local or remote computer. It ensures that the configuration file is placed in the correct directory on the target machine and performs necessary checks for administrative privileges and remote connectivity before proceeding with the deployment.
 
 ## Features
 - Validates the configuration file name is `PowerStruxWAConfig.txt`.
